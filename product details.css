@@ -1,0 +1,108 @@
+.nav-container {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 60px;
+  }
+  
+  nav ul li a:visited {
+    color: 404040;
+  }
+  
+  nav ul li a {
+    color: #404040;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
+  
+  nav img {
+    width: 300px;
+  }
+  
+   
+  h1 {
+    font-size: 36px;
+    margin-left: 620px;
+    margin-top: 50px;
+    margin-bottom: 60px;
+    color: black; 
+
+  }
+  
+  .red {
+    color: #e91e63; 
+    text-decoration: underline;
+}
+
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.product {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.product-image {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-details {
+  flex: 1;
+}
+
+.product-title {
+  font-size: 2rem;
+  margin: 0 0 10px;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  color: #27ae60;
+  margin: 10px 0;
+}
+
+.product-description {
+  margin: 15px 0;
+  line-height: 1.5;
+}
+
+input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

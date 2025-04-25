@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="product details.css" />
+  </head>
+
+  <body>
+    <div class="nav-container">
+      <nav>
+        <img src="/images/logo.png" alt="LogoImg" />
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+    <h1>product <span class="red">details</span></h1>
+
+    <div class="container">
+      <div class="product">
+        <img id="image" src="" alt="Product Image" class="product-image" />
+        <div class="product-details">
+          <h1 class="product-title" id="name"></h1>
+          <p class="product-price" id="price"></p>
+          <p class="product-description" id="desc"></p>
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" min="1" value="1" />
+          <button onclick="addToCart()">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function addToCart() {
+      const quantity = document.getElementById("quantity").value;
+      alert(`Added ${quantity} item(s) to your cart!`);
+    }
+  </script>
+
+  <script src="products.js"></script>
+  <script src="product.js"></script>
+</html>
