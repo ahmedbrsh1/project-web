@@ -3,7 +3,6 @@
   <head>
     <title>Login</title>
     <link rel="stylesheet" href="login.css" />
-    <link rel="stylesheet" href="css/boxicons.min.css">
   </head>
   <body>
     <div id="navbar"></div>
@@ -13,16 +12,17 @@
         <div class="curved-shape2"></div>
         <div class="from-box Login">
           <h2 class="animation" style="--D: 0; --S: 21">Login</h2>
-          <form action="#">
+          <form id="form" action="#"> 
+            <div id="error"></div> 
             <div class="input-box animation" style="--D: 1; --S: 22">
-              <input type="text" required />
-              <label for="">Username</label>
-              <i class='bx bxs-user' ></i>
+              <input type="text"  id="username" name="username" /> 
+              <label for="username">Username</label> 
+              <img src="User.svg" alt="" width="20" height="20" />
             </div>
             <div class="input-box animation" style="--D: 2; --S: 23">
-              <input type="password" required />
-              <label for="">Password</label>
-              <i class='bx bxs-lock-alt' ></i>
+              <input type="password" id="password" name="password"/> 
+              <label for="password">Password</label> 
+              <img src="Lock.svg" alt="" width="20" height="20" />
             </div>
             <div class="input-box animation" style="--D: 3; --S: 24">
               <button class="btn" type="submit">Login</button>
@@ -42,27 +42,27 @@
         </div>
         <div class="from-box Register">
           <h2 class="animation" style="--li: 17; --S: 0">Register</h2>
-          <form action="#">
+          <form id="form2" action="#">
+            <div id="error2"></div> 
             <div class="input-box animation" style="--li: 18; --S: 1">
-              <input type="text" required />
-              <label for="">Username</label>
-              <i class='bx bxs-user' ></i>
+              <input type="text" id="username2" name="username2" />
+              <label for="username2">Username</label>
+              <img src="User.svg" alt="" width="20" height="20" />
             </div>
             <div class="input-box animation" style="--li: 18; --S: 1">
-              <input type="email" required />
-              <label for="">Email</label>
-              <i class='bx bxs-envelope' ></i>
+              <input type="text" id="email" name="email"/>
+              <label for="email">Email</label>
+              <img src="Email.svg" alt="" width="20" height="20" />
             </div>
             <div class="input-box animation" style="--li: 18; --S: 1">
-              <input type="tel" pattern="[o-9]{12}" maxlength="12" minlength="12" required />
-              <label for="">Phone Number</label>
-              <i class='bx bxs-phone' ></i>
+              <input type="text" id="phone" name="phone" />
+              <label for="phone">Phone Number</label> 
             </div>
 
             <div class="input-box animation" style="--li: 19; --S: 2">
-              <input type="password" required />
-              <label for="">Password</label>
-              <i class='bx bxs-lock-alt' ></i>
+              <input type="password" id="password2" name="password2" />
+              <label for="password2">Password</label>
+              <img src="Lock.svg" alt="" width="20" height="20" />
             </div>
             <div class="input-box animation" style="--li: 20; --S: 3">
               <button class="btn" type="submit">Register</button>
@@ -85,10 +85,11 @@
     <script src="index.js"></script>
     <script>
       fetch("/navbar.html")
-        .then((res) => res.text())
-        .then((data) => {
-          document.getElementById("navbar").innerHTML = data;
-        });
-    </script>
+      .then((res) => res.text())
+      .then((data) => {
+        document.getElementById("navbar").innerHTML = data;
+      });
+      </script>
+  <script src="validation.js"></script>
   </body>
-</html>
+  </html>
