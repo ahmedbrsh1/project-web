@@ -73,6 +73,14 @@ header p {
   gap: 32px;
 }
 
+.products a {
+  text-decoration: none;
+}
+
+.products a:visited {
+  color: black;
+}
+
 .products div {
   background-color: #eee;
   text-align: center;

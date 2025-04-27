@@ -87,7 +87,7 @@
   transition: 0.5s;
 }
 .input-box input:focus,
-.input-box input:valid {
+.input-box input:not(:placeholder-shown) {
   border-bottom: 2px solid #ff2770;
 }
 .input-box label {
@@ -100,7 +100,7 @@
   transition: 0.5s;
 }
 .input-box input:focus ~ label,
-.input-box input:valid ~ label {
+.input-box :not(:placeholder-shown) ~ label {
   top: -5px;
   color: #ff2770;
 }
@@ -113,7 +113,7 @@
   color: #25253b
 }
 .input-box input:focus ~ i,
-.input-box input:valid ~ i {
+.input-box input:not(:placeholder-shown) ~ i {
   color: #ff2770;
 }
 .btn {

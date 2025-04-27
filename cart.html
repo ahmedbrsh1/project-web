@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <style>
+      table {
+        width: 90%;
+        margin: 20px auto;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid gray;
+        padding: 12px;
+        text-align: center;
+      }
+      img {
+        width: 60px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar"></div>
+
+    <h1 style="text-align: center">Cart</h1>
+
+    <table id="cart-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="cart-body"></tbody>
+    </table>
+
+    <script src="products.js"></script>
+
+    <script>
+      fetch("/navbar.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+
+      const cart = localStorage.getItem("cart")
+        ? JSON.parse(localStorage.getItem("cart"))
+        : [];
+
+      function renderCart() {
+        const cartBody = document.getElementById("cart-body");
+        cartBody.innerHTML = "";
+
+        cart.forEach((item) => {
+          const product = products.find((p) => p.id === item.id);
+          if (product) {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td><img src="${product.image}" alt="${product.alt}"></td>
+              <td>${product.name}</td>
+              <td>$${product.price}</td>
+              <td>${item.quantity}</td>
+              <td>$${(product.price * item.quantity).toFixed(2)}</td>
+            `;
+            cartBody.appendChild(row);
+          }
+        });
+      }
+
+      renderCart();
+    </script>
+  </body>
+</html>

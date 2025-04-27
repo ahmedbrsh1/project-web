@@ -8,16 +8,7 @@
   </head>
 
   <body>
-    <div class="nav-container">
-      <nav>
-        <img src="/images/logo.png" alt="LogoImg" />
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="login.html">Login</a></li>
-        </ul>
-      </nav>
-    </div>
+    <div id="navbar"></div>
     <h1>product <span class="red">details</span></h1>
 
     <div class="container">
@@ -37,10 +28,20 @@
   <script>
     function addToCart() {
       const quantity = document.getElementById("quantity").value;
-      alert(`Added ${quantity} item(s) to your cart!`);
+      const oldCart = localStorage.getItem("cart")
+        ? JSON.parse(localStorage.getItem("cart"))
+        : [];
+      const newCart = oldCart.find;
     }
   </script>
 
   <script src="products.js"></script>
   <script src="product.js"></script>
+  <script>
+    fetch("/navbar.html")
+      .then((res) => res.text())
+      .then((data) => {
+        document.getElementById("navbar").innerHTML = data;
+      });
+  </script>
 </html>
