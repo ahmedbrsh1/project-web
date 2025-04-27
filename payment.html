@@ -10,88 +10,76 @@
     <div id="navbar"></div>
 
     <h1>Payment</h1>
-     <div class="container">
-    <section class="order-summary">
-      <h2>Your Order</h2>
-      <table id="order-table">
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Image</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody id="order-items"></tbody>
-      </table>
-      <div class="total-price">
-        <strong>Total: $</strong><span id="total-price">0.00</span>
-      </div>
-    </section>
-
-    <section class="billing-address">
-      <h3>Billing Information</h3>
-      <form id="billing-form">
-        <div class="input-group">
-          <label for="full-name">Full Name</label>
-          <input type="text" id="full-name" placeholder="John Doe" required />
+    <div class="container">
+      <section class="order-summary">
+        <h2>Your Order</h2>
+        <table id="order-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Image</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="order-items"></tbody>
+        </table>
+        <div class="total-price">
+          <strong>Total: $</strong><span id="total-price">0.00</span>
         </div>
+      </section>
 
-        <div class="input-group">
-          <label for="street-address">Street Address</label>
-          <input
-            type="text"
-            id="street-address"
-            placeholder="123 Main St"
-            required
-          />
-        </div>
+      <section class="billing-address">
+        <h3>Billing Information</h3>
+        <form id="billing-form">
+          <div class="input-group">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" />
+          </div>
 
-        <div class="input-group">
-          <label for="city">City</label>
-          <input type="text" id="city" placeholder="New York" required />
-        </div>
+          <div class="input-group">
+            <label for="street-address">Street Address</label>
+            <input type="text" id="street-address" />
+          </div>
 
-        <div class="input-group">
-          <label for="postal-code">Postal Code</label>
-          <input
-            type="text"
-            id="postal-code"
-            placeholder="10001"
-            required
-          />
-        </div>
-      </form>
-    </section>
+          <div class="input-group">
+            <label for="city">City</label>
+            <input type="text" id="city" />
+          </div>
 
-    <section class="card-information">
-      <h3>Card Details</h3>
-      <form id="card-form">
-        <div class="input-group">
-          <label for="card-number">Card Number</label>
-          <input
-            type="text"
-            id="card-number"
-            placeholder="1234 5678 9012 3456"
-            required
-          />
-        </div>
+          <div class="input-group">
+            <label for="postal-code">Postal Code</label>
+            <input type="text" id="postal-code" />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+        <div id="billing-message" class="form-message"></div>
+      </section>
 
-        <div class="input-group">
-          <label for="expiry-date">Expiry Date (MM/YY)</label>
-          <input type="text" id="expiry-date" placeholder="MM/YY" required />
-        </div>
+      <section class="card-information">
+        <h3>Card Details</h3>
+        <form id="card-form">
+          <div class="input-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" />
+          </div>
 
-        <div class="input-group">
-          <label for="cvv">CVV</label>
-          <input type="text" id="cvv" placeholder="CVV" required />
-        </div>
+          <div class="input-group">
+            <label for="expiry-date">Expiry Date (MM/YY)</label>
+            <input type="text" id="expiry-date" placeholder="MM/YY" />
+          </div>
 
-        <button type="submit">Pay Now</button>
-      </form>
-    </section>
-</div>
+          <div class="input-group">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" placeholder="CVV" />
+          </div>
+
+          <button type="submit">Pay Now</button>
+        </form>
+        <div id="card-message" class="form-message"></div>
+      </section>
+    </div>
 
     <script src="products.js"></script>
 
@@ -130,16 +118,16 @@
 
       document.getElementById("card-form").addEventListener("submit", function(event) {
         event.preventDefault();
-
-        alert("Payment successful! Thank you for your purchase.");
       });
     </script>
+
     <script>
-        fetch("/navbar.html")
-          .then((res) => res.text())
-          .then((data) => {
-            document.getElementById("navbar").innerHTML = data;
-          });
-      </script>
+      fetch("/navbar.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+    </script>
+    <script src="paymentvalid.js"></script>
   </body>
 </html>
