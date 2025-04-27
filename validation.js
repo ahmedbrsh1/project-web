@@ -11,31 +11,28 @@ const errorElement2 = document.getElementById("error2");
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const usernameRegex = /^[a-zA-Z0-9 _]+$/;
 const phoneRegex = /^\d{11}$/;
-const passwordRegex =
-  /^(?=.[A-Za-z])(?=.\d)(?=.[!@#$%^&()_+\-=\[\]{};':"\\|,.<>\/?]).{6,20}$/;
+// const passwordRegex =
+//   /^(?=.[A-Za-z])(?=.\d)(?=.[!@#$%^&()_+\-=\[\]{};':"\\|,.<>\/?]).{6,20}$/;
 
 form.addEventListener("submit", (e) => {
   let messages = [];
 
   if (username.value === "" || username.value == null) {
     messages.push("Username is required");
-  } else if (!usernameRegex.test(username.value)) {
-    messages.push(
-      "Username can only contain letters, numbers, spaces, and underscores"
-    );
   }
 
   if (password.value === "" || password.value == null) {
     messages.push("Password is required");
-  } else if (password.value.length <= 6) {
-    messages.push("Password must be longer than 6 characters");
-  } else if (password.value.length >= 20) {
-    messages.push("Password must be less than 20 characters");
-  } else if (!passwordRegex.test(password.value)) {
-    messages.push(
-      "Password must contain at least one letter, one number, and one special character"
-    );
   }
+  //   else if (password.value.length <= 6) {
+  //     messages.push("Password must be longer than 6 characters");
+  //   } else if (password.value.length >= 20) {
+  //     messages.push("Password must be less than 20 characters");
+  //   } else if (!passwordRegex.test(password.value)) {
+  //     messages.push(
+  //       "Password must contain at least one letter, one number, and one special character"
+  //     );
+  //   }
 
   if (messages.length > 0) {
     e.preventDefault();
@@ -72,11 +69,12 @@ form2.addEventListener("submit", (e) => {
     messages.push("Password must be longer than 6 characters");
   } else if (password2.value.length >= 20) {
     messages.push("Password must be less than 20 characters");
-  } else if (!passwordRegex.test(password2.value)) {
-    messages.push(
-      "Password must contain at least one letter, one number, and one special character"
-    );
   }
+  //   else if (!passwordRegex.test(password2.value)) {
+  //     messages.push(
+  //       "Password must contain at least one letter, one number, and one special character"
+  //     );
+  //   }
 
   if (messages.length > 0) {
     e.preventDefault();
