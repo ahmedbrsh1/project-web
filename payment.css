@@ -151,3 +151,16 @@ body {
     border-color: #5b9bd5;
     outline: none;
   }
+  .form-message {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .error-message {
+    color: red;
+  }
+  
+  .success-message {
+    color: green;
+  }
