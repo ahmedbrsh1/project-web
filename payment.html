@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment</title>
+    <link rel="stylesheet" href="payment.css" />
+  </head>
+  <body>
+    <div id="navbar"></div>
+
+    <h1>Payment</h1>
+     <div class="container">
+    <!-- Order Summary -->
+    <section class="order-summary">
+      <h2>Your Order</h2>
+      <table id="order-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Image</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="order-items"></tbody>
+      </table>
+      <div class="total-price">
+        <strong>Total: $</strong><span id="total-price">0.00</span>
+      </div>
+    </section>
+
+    <!-- Billing Information -->
+    <section class="billing-address">
+      <h3>Billing Information</h3>
+      <form id="billing-form">
+        <div class="input-group">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" placeholder="John Doe" required />
+        </div>
+
+        <div class="input-group">
+          <label for="street-address">Street Address</label>
+          <input
+            type="text"
+            id="street-address"
+            placeholder="123 Main St"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="city">City</label>
+          <input type="text" id="city" placeholder="New York" required />
+        </div>
+
+        <div class="input-group">
+          <label for="postal-code">Postal Code</label>
+          <input
+            type="text"
+            id="postal-code"
+            placeholder="10001"
+            required
+          />
+        </div>
+      </form>
+    </section>
+
+    <!-- Card Information -->
+    <section class="card-information">
+      <h3>Card Details</h3>
+      <form id="card-form">
+        <div class="input-group">
+          <label for="card-number">Card Number</label>
+          <input
+            type="text"
+            id="card-number"
+            placeholder="1234 5678 9012 3456"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="expiry-date">Expiry Date (MM/YY)</label>
+          <input type="text" id="expiry-date" placeholder="MM/YY" required />
+        </div>
+
+        <div class="input-group">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" placeholder="CVV" required />
+        </div>
+
+        <button type="submit">Pay Now</button>
+      </form>
+    </section>
+</div>
+
+    <script src="products.js"></script>
+
+    <script>
+      // Get cart items from localStorage
+      const cart = localStorage.getItem("cart")
+        ? JSON.parse(localStorage.getItem("cart"))
+        : [];
+
+      // Function to render products in the order summary
+      function renderOrderSummary() {
+        const orderItems = document.getElementById("order-items");
+        let total = 0;
+        orderItems.innerHTML = ""; // Clear previous items
+
+        cart.forEach(item => {
+          const product = products.find(p => p.id === item.id); // Find the product by ID
+          if (product) {
+            const productTotal = product.price * item.quantity; // Calculate total for each product
+            total += productTotal; // Add to total price
+
+            // Create a table row for the product
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${product.name}</td>
+              <td><img src="${product.image}" alt="${product.name}" style="width: 50px; height: auto;"></td>
+              <td>${item.quantity}</td>
+              <td>$${product.price}</td>
+              <td>$${productTotal.toFixed(2)}</td>
+            `;
+            orderItems.appendChild(row);
+          }
+        });
+
+        // Update total price
+        document.getElementById("total-price").textContent = total.toFixed(2);
+      }
+
+      renderOrderSummary(); // Call function to render the order summary
+
+      // Add event listener for form submission
+      document.getElementById("card-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Simulate payment processing
+        alert("Payment successful! Thank you for your purchase.");
+      });
+    </script>
+    <script>
+        fetch("/navbar.html")
+          .then((res) => res.text())
+          .then((data) => {
+            document.getElementById("navbar").innerHTML = data;
+          });
+      </script>
+  </body>
+</html>
