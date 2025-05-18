@@ -1,0 +1,86 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.account-layout {
+  display: flex;
+  min-height: 100vh;
+  gap: 2rem;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #ff2770;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.sidebar ul li a:hover {
+  background-color: #ddd;
+}
+
+.account-info {
+  flex: 1;
+  padding: 30px;
+}
+
+.account-info h2 {
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+form button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table,
+td,
+th {
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+th,
+td {
+  padding: 10px;
+}

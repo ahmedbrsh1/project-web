@@ -25,20 +25,11 @@
       </div>
     </div>
   </body>
-  <script>
-    function addToCart() {
-      const quantity = document.getElementById("quantity").value;
-      const oldCart = localStorage.getItem("cart")
-        ? JSON.parse(localStorage.getItem("cart"))
-        : [];
-      const newCart = oldCart.find;
-    }
-  </script>
 
   <script src="products.js"></script>
   <script src="product.js"></script>
   <script>
-    fetch("/navbar.html")
+    fetch("/navbar.php")
       .then((res) => res.text())
       .then((data) => {
         document.getElementById("navbar").innerHTML = data;

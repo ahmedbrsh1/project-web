@@ -1,166 +1,172 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+h2,
+h3 {
+  color: #555;
+}
+
+#navbar {
+  margin-bottom: 20px;
+}
+
+.order-summary {
+  margin-bottom: 40px;
+}
+
+.order-summary table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+}
+
+.order-summary th,
+.order-summary td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.order-summary th {
+  background-color: #f4f4f4;
+}
+
+.total-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-align: right;
+}
+
+/* Form styling */
+.billing-address,
+.card-information {
+  margin: 20px auto;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:focus {
+  outline: none;
+}
+
+input[type="text"] {
+  height: 40px;
+}
+
+section {
+  margin-bottom: 30px;
+}
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    padding: 20px;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #333;
-  }
-  
-  h2, h3 {
-    color: #555;
-  }
-  
-  #navbar {
-    margin-bottom: 20px;
-  }
-  
-  .order-summary {
-    margin-bottom: 40px;
-  }
-  
-  .order-summary table {
-    width: 100%;
-    margin-bottom: 20px;
-    border-collapse: collapse;
-  }
-  
-  .order-summary th, .order-summary td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .order-summary th {
-    background-color: #f4f4f4;
-  }
-  
-  .total-price {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    text-align: right;
-  }
-  
-  /* Form styling */
-  .billing-address, .card-information {
-    margin: 20px auto;
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .input-group {
-    margin-bottom: 15px;
-  }
-  
-  .input-group label {
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 8px;
-    display: block;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    transition: border-color 0.3s;
-  }
-  
-  .input-group input:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  button {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
-  input[type="text"] {
-    height: 40px;
-  }
-  
-  section {
-    margin-bottom: 30px;
-  }
-  
-  body {
-   
-    min-height: 100vh;
-    background-color: #f4f4f4;
-  }
-  .container{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  }
-  
-  main {
-    width: 100%;
-    max-width: 1200px;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  h1, h2, h3 {
-    font-size: 24px;
-  }
-  
-  h3 {
-    font-size: 20px;
-  }
-  
-  input[type="text"], input[type="number"], input[type="tel"] {
-    padding: 12px;
-    margin-bottom: 10px;
-    width: 100%;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-  }
-  
-  input[type="text"]:focus, input[type="number"]:focus, input[type="tel"]:focus {
-    border-color: #5b9bd5;
-    outline: none;
-  }
-  .form-message {
-    margin-top: 10px;
-    font-size: 16px;
-    text-align: center;
-  }
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+.container {
+  max-width: 960px;
+  margin-inline: auto;
+}
 
-  .error-message {
-    color: red;
-  }
-  
-  .success-message {
-    color: green;
-  }
+main {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"] {
+  padding: 12px;
+  margin-bottom: 10px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus {
+  border-color: #5b9bd5;
+  outline: none;
+}
+.form-message {
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: green;
+}

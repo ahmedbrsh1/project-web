@@ -21,12 +21,12 @@ function addToCart() {
     (cartItem) => cartItem.id === productId
   );
   if (existsIndex !== -1) {
-    oldCart[existsIndex].quantity += 1;
+    oldCart[existsIndex].quantity = +oldCart[existsIndex].quantity + +quantity;
     localStorage.setItem("cart", JSON.stringify(oldCart));
   } else {
     localStorage.setItem(
       "cart",
-      JSON.stringify([...oldCart, { id: productId, quantity: 1 }])
+      JSON.stringify([...oldCart, { id: productId, quantity: quantity }])
     );
   }
 }

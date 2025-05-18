@@ -10,7 +10,9 @@
     <div id="navbar"></div>
 
     <h1>Payment</h1>
+
     <div class="container">
+      <!-- Order Summary -->
       <section class="order-summary">
         <h2>Your Order</h2>
         <table id="order-table">
@@ -30,59 +32,85 @@
         </div>
       </section>
 
-      <section class="billing-address">
-        <h3>Billing Information</h3>
-        <form id="billing-form">
+      <!-- Combined Billing & Payment Form -->
+      <section class="payment-form">
+        <h3>Billing & Payment Information</h3>
+        <form id="payment-form">
+          <!-- بدون action أو method لأننا هنبعت بـ JS -->
+          <!-- Billing Information -->
           <div class="input-group">
             <label for="full-name">Full Name</label>
-            <input type="text" id="full-name" />
+            <input type="text" id="full-name" name="fullName" required />
           </div>
 
           <div class="input-group">
             <label for="street-address">Street Address</label>
-            <input type="text" id="street-address" />
+            <input
+              type="text"
+              id="street-address"
+              name="streetAddress"
+              required
+            />
           </div>
 
           <div class="input-group">
             <label for="city">City</label>
-            <input type="text" id="city" />
+            <input type="text" id="city" name="city" required />
           </div>
 
           <div class="input-group">
             <label for="postal-code">Postal Code</label>
-            <input type="text" id="postal-code" />
+            <input type="text" id="postal-code" name="postalCode" required />
           </div>
-          <button type="submit">Submit</button>
-        </form>
-        <div id="billing-message" class="form-message"></div>
-      </section>
 
-      <section class="card-information">
-        <h3>Card Details</h3>
-        <form id="card-form">
+          <!-- Card Information -->
           <div class="input-group">
             <label for="card-number">Card Number</label>
-            <input type="text" id="card-number" />
+            <input
+              type="text"
+              id="card-number"
+              name="cardNumber"
+              inputmode="numeric"
+              pattern="\d{13,19}"
+              required
+            />
           </div>
 
           <div class="input-group">
             <label for="expiry-date">Expiry Date (MM/YY)</label>
-            <input type="text" id="expiry-date" placeholder="MM/YY" />
+            <input
+              type="text"
+              id="expiry-date"
+              name="expiryDate"
+              placeholder="MM/YY"
+              pattern="(0[1-9]|1[0-2])\/\d{2}"
+              required
+            />
           </div>
 
           <div class="input-group">
             <label for="cvv">CVV</label>
-            <input type="text" id="cvv" placeholder="CVV" />
+            <input
+              type="text"
+              id="cvv"
+              name="cvv"
+              placeholder="CVV"
+              pattern="\d{3,4}"
+              autocomplete="off"
+              required
+            />
           </div>
 
           <button type="submit">Pay Now</button>
         </form>
-        <div id="card-message" class="form-message"></div>
+        <div id="payment-message" class="form-message"></div>
       </section>
     </div>
 
+    <!-- Load Product Data -->
     <script src="products.js"></script>
 
+    <!-- Render Order Summary -->
     <script>
       const cart = localStorage.getItem("cart")
         ? JSON.parse(localStorage.getItem("cart"))
@@ -93,8 +121,14 @@
         let total = 0;
         orderItems.innerHTML = "";
 
-        cart.forEach(item => {
-          const product = products.find(p => p.id === item.id);
+        if (cart.length === 0) {
+          orderItems.innerHTML =
+            '<tr><td colspan="5">Your cart is empty.</td></tr>';
+          return;
+        }
+
+        cart.forEach((item) => {
+          const product = products.find((p) => p.id === item.id);
           if (product) {
             const productTotal = product.price * item.quantity;
             total += productTotal;
@@ -102,7 +136,9 @@
             const row = document.createElement("tr");
             row.innerHTML = `
               <td>${product.name}</td>
-              <td><img src="${product.image}" alt="${product.name}" style="width: 50px; height: auto;"></td>
+              <td><img src="${product.image}" alt="${
+              product.name
+            }" style="width: 50px; height: auto;"></td>
               <td>${item.quantity}</td>
               <td>$${product.price}</td>
               <td>$${productTotal.toFixed(2)}</td>
@@ -114,20 +150,61 @@
         document.getElementById("total-price").textContent = total.toFixed(2);
       }
 
-      renderOrderSummary();
-
-      document.getElementById("card-form").addEventListener("submit", function(event) {
-        event.preventDefault();
+      // Wait for DOM and product script to be ready
+      window.addEventListener("DOMContentLoaded", () => {
+        renderOrderSummary();
       });
+
+      // Handle Form Submission with fetch
+      document
+        .getElementById("payment-form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          if (cart.length === 0) {
+            document.getElementById("payment-message").textContent =
+              "Cart is empty!";
+            return;
+          }
+
+          const form = event.target;
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+
+          data.cart = JSON.stringify(cart);
+          data.pay_now = true;
+
+          try {
+            const response = await fetch("payment.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+              body: new URLSearchParams(data).toString(),
+            });
+
+            const result = await response.text();
+            document.getElementById("payment-message").innerHTML = result;
+
+            // Clear cart after success
+            localStorage.removeItem("cart");
+          } catch (error) {
+            console.error("Error:", error);
+            document.getElementById("payment-message").textContent =
+              "An error occurred.";
+          }
+        });
     </script>
 
+    <!-- Load Navbar -->
     <script>
-      fetch("/navbar.html")
+      fetch("/navbar.php")
         .then((res) => res.text())
         .then((data) => {
           document.getElementById("navbar").innerHTML = data;
         });
     </script>
+
     <script src="paymentvalid.js"></script>
   </body>
 </html>

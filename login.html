@@ -8,13 +8,15 @@
   <body>
     <div id="navbar"></div>
     <div class="login-container">
-      <div class="container">
+      <div class="container <?php echo $containerActiveClass; ?>">
         <div class="curved-shape"></div>
         <div class="curved-shape2"></div>
         <div class="from-box Login">
           <h2 class="animation" style="--D: 0; --S: 21">Login</h2>
-          <form id="form" action="login_register.php" method="post">
+          <form id="form">
             <ul id="error"></ul>
+            <div id="login-error"></div>
+
             <div class="input-box animation" style="--D: 1; --S: 22">
               <input
                 type="text"
@@ -53,8 +55,9 @@
         </div>
         <div class="from-box Register">
           <h2 class="animation" style="--li: 17; --S: 0">Register</h2>
-          <form id="form2" action="login_register.php" method="post">
+          <form id="form2">
             <ul id="error2"></ul>
+            <div id="register-error"></div>
             <div class="input-box animation" style="--li: 18; --S: 1">
               <input
                 type="text"
@@ -108,12 +111,13 @@
     </div>
     <script src="index.js"></script>
     <script>
-      fetch("/navbar.html")
+      fetch("/navbar.php")
         .then((res) => res.text())
         .then((data) => {
           document.getElementById("navbar").innerHTML = data;
         });
     </script>
+
     <script src="validation.js"></script>
   </body>
 </html>

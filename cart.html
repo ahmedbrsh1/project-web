@@ -43,7 +43,7 @@
     <script src="products.js"></script>
 
     <script>
-      fetch("/navbar.html")
+      fetch("/navbar.php")
         .then((res) => res.text())
         .then((data) => {
           document.getElementById("navbar").innerHTML = data;
@@ -74,8 +74,20 @@
       }
       renderCart();
     </script>
-<div style="text-align: center; margin-top: 20px;">
-  <a href="payment.html" class="pay-button" style="padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; font-size: 16px;">Proceed to Payment</a>
-</div>
+    <div style="text-align: center; margin-top: 20px">
+      <a
+        href="payment.html"
+        class="pay-button"
+        style="
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 16px;
+        "
+        >Proceed to Payment</a
+      >
+    </div>
   </body>
 </html>
